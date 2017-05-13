@@ -1,5 +1,9 @@
 package main.java;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+
 public class GameForm extends javax.swing.JFrame {
 
     public GameForm() {
@@ -25,6 +29,10 @@ public class GameForm extends javax.swing.JFrame {
         labelSpeedB = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        progressFuelA = new javax.swing.JProgressBar();
+        progressFuelB = new javax.swing.JProgressBar();
+        labelPlayerA = new javax.swing.JLabel();
+        labelPlayerB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -101,6 +109,16 @@ public class GameForm extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        progressFuelA.setForeground(new java.awt.Color(255, 178, 102));
+        progressFuelA.setValue(100);
+
+        progressFuelB.setForeground(new java.awt.Color(102, 178, 255));
+        progressFuelB.setValue(100);
+
+        labelPlayerA.setText("Spieler A");
+
+        labelPlayerB.setText("Spieler B");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,35 +127,43 @@ public class GameForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelSpeedA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelSpeedB))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonWeiterA)
                             .addComponent(buttonBremsenA)
-                            .addComponent(buttonBeschlA))
-                        .addGap(221, 221, 221)
+                            .addComponent(buttonBeschlA)
+                            .addComponent(labelSpeedA)
+                            .addComponent(progressFuelA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(189, 189, 189)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonWeiterB, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(buttonBremsenB, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonBeschlB, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(buttonBeschlB, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelSpeedB, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(progressFuelB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelPlayerA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelPlayerB)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelSpeedA)
-                            .addComponent(labelSpeedB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPlayerA)
+                    .addComponent(labelPlayerB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelSpeedB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(progressFuelB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(458, 458, 458)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonBeschlA)
                             .addComponent(buttonBeschlB))
@@ -150,10 +176,12 @@ public class GameForm extends javax.swing.JFrame {
                             .addComponent(buttonWeiterA)
                             .addComponent(buttonWeiterB)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(labelSpeedA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(progressFuelA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -161,28 +189,55 @@ public class GameForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWeiterAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWeiterAActionPerformed
-        // TODO add your handling code here:
+        this.weiter(this.labelSpeedA, this.progressFuelA, this.buttonWeiterA);
     }//GEN-LAST:event_buttonWeiterAActionPerformed
 
     private void buttonWeiterBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWeiterBActionPerformed
-        // TODO add your handling code here:
+        this.weiter(this.labelSpeedB, this.progressFuelB, this.buttonWeiterB);
     }//GEN-LAST:event_buttonWeiterBActionPerformed
 
     private void buttonBremsenAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBremsenAActionPerformed
-        // TODO add your handling code here:
+        this.decreaseSpeed(this.labelSpeedA, 10);
     }//GEN-LAST:event_buttonBremsenAActionPerformed
 
     private void buttonBremsenBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBremsenBActionPerformed
-        // TODO add your handling code here:
+        this.decreaseSpeed(this.labelSpeedB, 10);
     }//GEN-LAST:event_buttonBremsenBActionPerformed
 
     private void buttonBeschlAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBeschlAActionPerformed
-        this.labelSpeedA.setText("10");
+        this.increaseSpeed(this.labelSpeedA, 10);
     }//GEN-LAST:event_buttonBeschlAActionPerformed
 
     private void buttonBeschlBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBeschlBActionPerformed
-        // TODO add your handling code here:
+        this.increaseSpeed(this.labelSpeedB, 10);
     }//GEN-LAST:event_buttonBeschlBActionPerformed
+
+    private void increaseSpeed(JLabel label, int amount) {
+        int currentValue = Integer.parseInt(label.getText());
+        int newValue = currentValue + amount;
+        label.setText(String.valueOf(newValue));
+    }
+
+    private void decreaseSpeed(JLabel label, int amount) {
+        int currentValue = Integer.parseInt(label.getText());
+        int newValue = currentValue - amount;
+        if (newValue < 0) {
+            label.setText("0");
+        } else {
+            label.setText(String.valueOf(newValue));
+        }
+    }
+
+    private void weiter(JLabel label, JProgressBar progressbar, JButton button) {
+        int speed = Integer.parseInt(label.getText());
+        int currentValue = progressbar.getValue();
+        int newValue = currentValue - (int)Math.sqrt(speed);
+        progressbar.setValue(newValue);
+
+        if (progressbar.getValue() <= 0) {
+            button.setEnabled(false);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -229,7 +284,11 @@ public class GameForm extends javax.swing.JFrame {
     private javax.swing.JButton buttonWeiterB;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelPlayerA;
+    private javax.swing.JLabel labelPlayerB;
     private javax.swing.JLabel labelSpeedA;
     private javax.swing.JLabel labelSpeedB;
+    private javax.swing.JProgressBar progressFuelA;
+    private javax.swing.JProgressBar progressFuelB;
     // End of variables declaration//GEN-END:variables
 }
