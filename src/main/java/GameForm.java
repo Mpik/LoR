@@ -1,7 +1,6 @@
 package main.java;
 
 import java.util.concurrent.ThreadLocalRandom;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
@@ -12,11 +11,11 @@ public class GameForm extends javax.swing.JFrame {
     public GameForm(String nameP1, String nameP2) {
         initComponents();
 
-        // Wert zwischen 3000 und 5000 ermitteln (random)
-        int trackLength = ThreadLocalRandom.current().nextInt(3000, 5001);
-
         this.labelPlayerA.setText(nameP1);
         this.labelPlayerB.setText(nameP2);
+
+        // Wert zwischen 3000 und 5000 ermitteln (random)
+        int trackLength = ThreadLocalRandom.current().nextInt(3000, 5001);
         this.labelTrackLengthA.setText(String.valueOf(trackLength));
         this.labelTrackLengthB.setText(String.valueOf(trackLength));
     }
@@ -39,7 +38,9 @@ public class GameForm extends javax.swing.JFrame {
         labelSpeedA = new javax.swing.JLabel();
         labelSpeedB = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        labelCarP1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        labelCarP2 = new javax.swing.JLabel();
         progressFuelA = new javax.swing.JProgressBar();
         progressFuelB = new javax.swing.JProgressBar();
         labelPlayerA = new javax.swing.JLabel();
@@ -100,28 +101,44 @@ public class GameForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 128, 0));
 
+        labelCarP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/miara.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelCarP1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(578, Short.MAX_VALUE)
+                .addComponent(labelCarP1)
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 128, 255));
+
+        labelCarP2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/italigto.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelCarP2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelCarP2)
+                .addContainerGap())
         );
 
         progressFuelA.setForeground(new java.awt.Color(255, 178, 102));
@@ -172,7 +189,7 @@ public class GameForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelTrackLengthB)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(progressFuelB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -204,7 +221,7 @@ public class GameForm extends javax.swing.JFrame {
                             .addComponent(labelSpeedB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(progressFuelB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 462, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 634, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonBeschlA)
                             .addComponent(buttonBeschlB))
@@ -263,12 +280,28 @@ public class GameForm extends javax.swing.JFrame {
         this.increaseSpeed(this.labelSpeedB, 10);
     }//GEN-LAST:event_buttonBeschlBActionPerformed
 
+    /**
+     * Erhöht die Geschwindigkeit eines Spielers um die Menge amount.
+     *
+     * @param JLabel label Das Geschwindigkeit-Label des Spielers
+     * @param int amount   Die Menge, um die die Geschwindigkeit erhöht werden soll
+     */
     private void increaseSpeed(JLabel label, int amount) {
         int currentValue = Integer.parseInt(label.getText());
         int newValue = currentValue + amount;
+        if (newValue > 200) {
+            newValue = 200;
+        }
         label.setText(String.valueOf(newValue));
     }
 
+    /**
+     * Verringert die Geschwindigkeit eines Spielers um die Menge amount.
+     *
+     * @param JLabel label Das Geschwindigkeit-Label des Spielers
+     * @param int amount   Die Menge, um die die Geschwindigkeit verringert werden
+     * soll
+     */
     private void decreaseSpeed(JLabel label, int amount) {
         int currentValue = Integer.parseInt(label.getText());
         int newValue = currentValue - amount;
@@ -279,47 +312,78 @@ public class GameForm extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Setzt das Spiel fort, wenn beide Spieler bereit sind (nach einem Klick auf
+     * "Weiter" werden this.isReadyA und this.isReadyB auf true gesetzt).
+     */
     private void weiter() {
+        // Nach jeder Runde wird die Tankanzeige der Spieler verringert.
         this.progressFuelA.setValue(this.calcFuel(this.progressFuelA, this.labelSpeedA));
         this.progressFuelB.setValue(this.calcFuel(this.progressFuelB, this.labelSpeedB));
 
+        // Falls ein Spieler keinen Tank mehr hat, wird der Weiter-Button disablet.
+        // Andernfalls wird die zurückgelegte Strecke von der noch zu fahrenden Strecke subtrahiert
+        // und der Button wird wieder enablet.
         if (this.progressFuelA.getValue() <= 0) {
+            this.buttonBeschlA.setEnabled(false);
+            this.buttonBremsenA.setEnabled(false);
             this.buttonWeiterA.setEnabled(false);
             this.isReadyA = true;
         } else {
             int speed = Integer.parseInt(this.labelSpeedA.getText());
             int trackLength = Integer.parseInt(this.labelTrackLengthA.getText());
+
             this.labelTrackLengthA.setText(String.valueOf(trackLength - speed));
             this.isReadyA = false;
         }
 
         if (this.progressFuelB.getValue() <= 0) {
+            this.buttonBeschlB.setEnabled(false);
+            this.buttonBremsenB.setEnabled(false);
             this.buttonWeiterB.setEnabled(false);
             this.isReadyB = true;
         } else {
             int speed = Integer.parseInt(this.labelSpeedB.getText());
             int trackLength = Integer.parseInt(this.labelTrackLengthB.getText());
+
             this.labelTrackLengthB.setText(String.valueOf(trackLength - speed));
             this.isReadyB = false;
         }
 
+        // Falls beide Spieler keinen Tank mehr haben, wird das Spiel beendet.
+        // Der Spieler mit der am weitesten zurückgelegten Strecke gewinnt.
         if (this.progressFuelA.getValue() == 0 && this.progressFuelB.getValue() == 0) {
             if (Integer.parseInt(this.labelTrackLengthA.getText()) < Integer.parseInt(this.labelTrackLengthB.getText())) {
-                gameOver(this.labelPlayerA);
+                this.gameOver(this.labelPlayerA);
             } else {
-                gameOver(this.labelPlayerB);
+                this.gameOver(this.labelPlayerB);
             }
         }
     }
 
+    /**
+     * Berechnet die neue Tankanzeige anhand der alten Tankanzeige und der
+     * momentanen Geschwindigkeit.
+     *
+     * @param JProgressBar progressFuel Die bisherige Tankanzeige des Spielers
+     * @param JLabel labelSpeed         Die momentane Geschwindigkeit des Spielers
+     * @return int                      Die neue Tankanzeige des Spielers
+     */
     private int calcFuel(JProgressBar progressFuel, JLabel labelSpeed) {
         int speed = Integer.parseInt(labelSpeed.getText());
         int currentValue = progressFuel.getValue();
         return currentValue - (int)Math.sqrt(speed);
     }
 
+    /**
+     * Ruft die "Game Over" Form mit dem Namen des Gewinners auf.
+     *
+     * @param JLabel player Das Label des Gewinners
+     * @return void
+     */
     private void gameOver(JLabel player) {
         String playerName = player.getText();
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GameOverForm(playerName).setVisible(true);
@@ -338,6 +402,8 @@ public class GameForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelCarP1;
+    private javax.swing.JLabel labelCarP2;
     private javax.swing.JLabel labelPlayerA;
     private javax.swing.JLabel labelPlayerB;
     private javax.swing.JLabel labelSpeedA;
