@@ -11,10 +11,10 @@ public class GameForm extends javax.swing.JFrame {
 
     public GameForm(String nameP1, String nameP2) {
         initComponents();
-        
+
         // Wert zwischen 3000 und 5000 ermitteln (random)
         int trackLength = ThreadLocalRandom.current().nextInt(3000, 5001);
-        
+
         this.labelPlayerA.setText(nameP1);
         this.labelPlayerB.setText(nameP2);
         this.labelTrackLengthA.setText(String.valueOf(trackLength));
@@ -278,7 +278,7 @@ public class GameForm extends javax.swing.JFrame {
             label.setText(String.valueOf(newValue));
         }
     }
-    
+
     private void weiter() {
         this.progressFuelA.setValue(this.calcFuel(this.progressFuelA, this.labelSpeedA));
         this.progressFuelB.setValue(this.calcFuel(this.progressFuelB, this.labelSpeedB));
@@ -292,7 +292,7 @@ public class GameForm extends javax.swing.JFrame {
             this.labelTrackLengthA.setText(String.valueOf(trackLength - speed));
             this.isReadyA = false;
         }
-        
+
         if (this.progressFuelB.getValue() <= 0) {
             this.buttonWeiterB.setEnabled(false);
             this.isReadyB = true;
@@ -302,7 +302,7 @@ public class GameForm extends javax.swing.JFrame {
             this.labelTrackLengthB.setText(String.valueOf(trackLength - speed));
             this.isReadyB = false;
         }
-        
+
         if (this.progressFuelA.getValue() == 0 && this.progressFuelB.getValue() == 0) {
             if (Integer.parseInt(this.labelTrackLengthA.getText()) < Integer.parseInt(this.labelTrackLengthB.getText())) {
                 gameOver(this.labelPlayerA);
