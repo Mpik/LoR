@@ -41,18 +41,6 @@ public class LauncherForm extends javax.swing.JFrame {
         labelSpielerB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelSpielerB.setText("Spieler 2");
 
-        textfieldNameA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfieldNameAActionPerformed(evt);
-            }
-        });
-
-        textfieldNameB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfieldNameBActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,7 +73,7 @@ public class LauncherForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textfieldNameB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelSpielerB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(buttonStart)
                 .addContainerGap())
         );
@@ -106,18 +94,9 @@ public class LauncherForm extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_buttonStartActionPerformed
 
-    private void textfieldNameAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldNameAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textfieldNameAActionPerformed
-
-    private void textfieldNameBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldNameBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textfieldNameBActionPerformed
-
     private void buttonStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonStartMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonStartMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonStart;

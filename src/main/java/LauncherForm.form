@@ -59,7 +59,7 @@
                   <Component id="textfieldNameB" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelSpielerB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="93" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="buttonStart" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -89,14 +89,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="textfieldNameA">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textfieldNameAActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="textfieldNameB">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textfieldNameBActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
