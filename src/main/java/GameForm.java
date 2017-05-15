@@ -276,6 +276,7 @@ public class GameForm extends javax.swing.JFrame {
             this.weiter();
         } else {
             this.p1.setIsReady(true);
+            this.buttonWeiterA.setEnabled(false);
         }
     }//GEN-LAST:event_buttonWeiterAActionPerformed
 
@@ -284,6 +285,7 @@ public class GameForm extends javax.swing.JFrame {
             this.weiter();
         } else {
             this.p2.setIsReady(true);
+            this.buttonWeiterB.setEnabled(false);
         }
     }//GEN-LAST:event_buttonWeiterBActionPerformed
 
@@ -335,10 +337,10 @@ public class GameForm extends javax.swing.JFrame {
         // Andernfalls wird die zurückgelegte Strecke von der noch zu fahrenden Strecke subtrahiert
         // und der Button wird wieder enablet.
         if (this.carP1.getFuel() <= 0) {
+            this.p1.setIsReady(true);
             this.buttonBeschlA.setEnabled(false);
             this.buttonBremsenA.setEnabled(false);
             this.buttonWeiterA.setEnabled(false);
-            this.p1.setIsReady(true);
         } else {
             int speed = this.carP1.getSpeed();
             int trackLength = this.trackP1.getLength();
@@ -347,13 +349,14 @@ public class GameForm extends javax.swing.JFrame {
 
             this.labelTrackLengthA.setText(String.valueOf(this.trackP1.getLength()));
             this.p1.setIsReady(false);
+            this.buttonWeiterA.setEnabled(true);
         }
 
         if (this.carP2.getFuel() <= 0) {
+            this.p2.setIsReady(true);
             this.buttonBeschlB.setEnabled(false);
             this.buttonBremsenB.setEnabled(false);
             this.buttonWeiterB.setEnabled(false);
-            this.p2.setIsReady(true);
         } else {
             int speed = this.carP2.getSpeed();
             int trackLength = this.trackP2.getLength();
@@ -362,6 +365,7 @@ public class GameForm extends javax.swing.JFrame {
 
             this.labelTrackLengthB.setText(String.valueOf(this.trackP2.getLength()));
             this.p2.setIsReady(false);
+            this.buttonWeiterB.setEnabled(true);
         }
 
         if (this.trackP1.getLength() <= 0 && this.trackP2.getLength() <= 0) {
