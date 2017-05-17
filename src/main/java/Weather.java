@@ -3,10 +3,9 @@ package main.java;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Weather {
-    String type;
-    int trackLength;
-    int speedMax;
-    int mileageFactor;
+    private String type;
+    private int speedMax;
+    private int mileageFactor;
 
     public Weather() {
         // random int zwischen 1 und 10
@@ -22,26 +21,34 @@ public class Weather {
         } else {
             this.setSchnee();
         }
+    }
 
+    public String getType() {
+        return this.type;
+    }
+
+    public int getSpeedMax() {
+        return this.speedMax;
+    }
+
+    public int getMileageFactor() {
+        return this.mileageFactor;
     }
 
     public final void setSonne() {
         this.type = "Sonne";
-        this.trackLength = ThreadLocalRandom.current().nextInt(1000, 1501);
         this.speedMax = 200;
         this.mileageFactor = 2;
     }
 
     public final void setRegen() {
         this.type = "Regen";
-        this.trackLength = ThreadLocalRandom.current().nextInt(1000, 1801);
         this.speedMax = 150;
         this.mileageFactor = 1;
     }
 
     public final void setSchnee() {
         this.type = "Schnee";
-        this.trackLength = ThreadLocalRandom.current().nextInt(1500, 2001);
         this.speedMax = 70;
         this.mileageFactor = 4;
     }

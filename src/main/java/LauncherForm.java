@@ -24,11 +24,6 @@ public class LauncherForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonStart.setText("Start");
-        buttonStart.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                buttonStartMouseClicked(evt);
-            }
-        });
         buttonStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonStartActionPerformed(evt);
@@ -89,14 +84,12 @@ public class LauncherForm extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameForm(nameP1, nameP2).setVisible(true);
+                Player p1 = new Player(nameP1);
+                Player p2 = new Player(nameP2);
+                new GameForm(p1, p2).setVisible(true);
             }
         });
     }//GEN-LAST:event_buttonStartActionPerformed
-
-    private void buttonStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonStartMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonStartMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonStart;

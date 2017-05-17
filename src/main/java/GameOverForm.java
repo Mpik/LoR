@@ -2,9 +2,14 @@ package main.java;
 
 public class GameOverForm extends javax.swing.JFrame {
 
-    public GameOverForm(String playerName) {
+    public GameOverForm(Player winner) {
         initComponents();
-        this.labelPlayerName.setText(playerName + "!");
+        this.labelWinner.setText("Der Gewinner ist " + winner.getName() + "!");
+    }
+
+    public GameOverForm() {
+        initComponents();
+        this.labelWinner.setText("Unentschieden!");
     }
 
     /**
@@ -16,44 +21,21 @@ public class GameOverForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        labelPlayerName = new javax.swing.JLabel();
+        labelWinner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Der Gewinner ist");
-
-        labelPlayerName.setText("Placeholder");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(labelPlayerName)))
-                .addContainerGap(143, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelPlayerName)
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
+        labelWinner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelWinner.setText("Placeholder");
+        labelWinner.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 20, 50, 20));
+        labelWinner.setPreferredSize(new java.awt.Dimension(400, 120));
+        getContentPane().add(labelWinner, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel labelPlayerName;
+    private javax.swing.JLabel labelWinner;
     // End of variables declaration//GEN-END:variables
 }
