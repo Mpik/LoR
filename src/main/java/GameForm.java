@@ -1,5 +1,6 @@
 package main.java;
 
+import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JLabel;
 
@@ -345,8 +346,22 @@ public class GameForm extends javax.swing.JFrame {
             int speed = this.carP1.getSpeed();
             int trackLength = this.trackP1.getLength();
 
-            this.trackP1.setLength(trackLength - speed);
-
+            int remainingTrack = trackLength - speed;
+            
+            if(speed > 0) {
+                Rectangle bounds = this.jPanel1.getBounds();
+                int upperLeftBound = bounds.y;
+                int percentageRemainingTrack = (int) (((float)remainingTrack / trackLength) * 100);
+                int percentageToGo = 100 - percentageRemainingTrack;
+                int moveForward = (int) (upperLeftBound * ((double)percentageToGo / 100));
+                
+                int y = this.labelCarP1.getY() - moveForward;
+                this.labelCarP1.setLocation(this.labelCarP1.getX(), y);
+            }
+            
+            this.trackP1.setLength(remainingTrack);
+            
+           
             this.labelTrackLengthA.setText(String.valueOf(this.trackP1.getLength()));
             this.p1.setIsReady(false);
             this.buttonWeiterA.setEnabled(true);
@@ -360,8 +375,22 @@ public class GameForm extends javax.swing.JFrame {
         } else {
             int speed = this.carP2.getSpeed();
             int trackLength = this.trackP2.getLength();
+            final int remainingTrack = trackLength - speed;
+            
+            if(speed > 0)
+            {
+                Rectangle bounds = this.jPanel2.getBounds();
+                int upperLeftBound = bounds.y;
+                int percentageTrack = (int) (((float)remainingTrack / trackLength) * 100);
+                int percentageToGo = 100 - percentageTrack;
+                int moveForward = (int) (upperLeftBound * ((double)percentageToGo / 100));
+                int y = this.labelCarP2.getY();
+                int newY = y - moveForward;
 
-            this.trackP2.setLength(trackLength - speed);
+                this.labelCarP2.setLocation(this.labelCarP2.getX(), newY);
+            }
+                        
+            this.trackP2.setLength(remainingTrack);
 
             this.labelTrackLengthB.setText(String.valueOf(this.trackP2.getLength()));
             this.p2.setIsReady(false);
